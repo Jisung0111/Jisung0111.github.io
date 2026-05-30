@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jisung Hwang — KAIST Visual AI Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="favicon-jisung.ico" sizes="any" />
+  <link rel="icon" href="favicon-jisung.png" type="image/png" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="nav-logo-jp">黃</span>Jisung
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about"><span class="link-jp">紹介</span> About</a></li>
+        <li><a href="#publications"><span class="link-jp">研究</span> Research</a></li>
+        <li><a href="#contact"><span class="link-jp">連絡</span> Contact</a></li>
+        <li><a href="cv/cv.pdf" target="_blank" class="nav-cv">CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <canvas id="bg-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-meta">
+        <span class="hero-meta-dot"></span>
+        Ph.D. Student&nbsp;&nbsp;//&nbsp;&nbsp;KAIST Visual AI Group&nbsp;&nbsp;//&nbsp;&nbsp;2026—
+      </div>
+
+      <h1 class="hero-name">
+        <span class="name-en">JISUNG<br />HWANG</span>
+      </h1>
+
+      <div class="hero-name-row">
+        <span class="name-kr">황지성</span>
+        <div class="hero-divider-v"></div>
+        <span class="name-zh">黃智聖</span>
+        <div class="hero-divider-v"></div>
+        <span class="hero-fields">White Noise · Generative Models</span>
+      </div>
+
+      <div class="hero-rule"></div>
+
+      <div class="hero-links">
+        <a href="https://scholar.google.com/citations?user=0JtvonsAAAAJ&hl=ja" target="_blank" class="hero-btn">Scholar</a>
+        <a href="https://kr.linkedin.com/in/jisung-hwang-1a9365340" target="_blank" class="hero-btn">LinkedIn</a>
+        <a href="https://twitter.com/Jisung0111" target="_blank" class="hero-btn">X / Twitter</a>
+        <a href="https://github.com/Jisung0111" target="_blank" class="hero-btn">GitHub</a>
+        <a href="cv/cv.pdf" target="_blank" class="hero-btn">CV →</a>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+    <span class="hero-place-label">東京駅</span>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="about-tower" aria-hidden="true"></div>
+    <div class="container">
+
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <div class="section-rule"></div>
+        <span class="section-jp">自己紹介</span>
+      </div>
+      <h2 class="section-title">About</h2>
+
+      <div class="about-grid">
+
+        <div class="about-photo-col">
+          <div class="photo-frame">
+            <img src="assets/photos/JisungProfile.jpg" alt="Jisung Hwang" class="profile-img" />
+            <div class="photo-corner tl"></div>
+            <div class="photo-corner tr"></div>
+            <div class="photo-corner bl"></div>
+            <div class="photo-corner br"></div>
+          </div>
+
+          <div class="profile-label">
+            <div class="profile-label-name">Jisung Hwang</div>
+            <div class="profile-label-sub">황지성 · 黃智聖</div>
+          </div>
+
+          <div class="affil-block">
+            <div class="affil-line">
+              <span class="affil-dot"></span>
+              <span>KAIST · School of Computing</span>
+            </div>
+            <div class="affil-line">
+              <span class="affil-dot"></span>
+              <a href="https://visualai.kaist.ac.kr/" target="_blank">Visual AI Group</a>
+            </div>
+            <div class="affil-line">
+              <span class="affil-dot"></span>
+              <span>Advisor: <a href="https://mhsung.github.io/" target="_blank">Minhyuk Sung</a></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text-col">
+          <p class="about-lead">
+            Understanding the Role of <em>Noise</em> in <em>Neural Networks</em>
+          </p>
+          <p>
+            I am a first-year Ph.D. student in the
+            <a href="https://visualai.kaist.ac.kr/" target="_blank">Visual AI Group</a> at KAIST,
+            advised by Prof. <a href="https://mhsung.github.io/" target="_blank">Minhyuk Sung</a>.
+            I study how Gaussian noise and whitening shape the behavior of generative models,
+            and more broadly what enforcing or exploiting noise structure can offer neural networks
+            at training and inference time.
+          </p>
+          <p>
+            This theme has driven my work on Gaussianity regularization
+            and gradient preconditioning via white noise projection, and now draws me toward the Muon
+            optimizer, where I see deeper connections to whitening waiting to be uncovered.
+          </p>
+          <p>
+            I previously worked on AI for bioscience and 3D computer graphics. Recently, I have become interested in efficient CUDA
+            implementations, because making ideas practical at scale matters as much to me as the ideas themselves.
+          </p>
+
+          <div class="tags">
+            <span class="tag">White Noise</span>
+            <span class="tag">Muon Optimizer</span>
+            <span class="tag">Parallel Computing</span>
+            <span class="tag">Generative Models</span>
+            <span class="tag">AI for Bioscience</span>
+            <span class="tag">3D Graphics</span>
+          </div>
+
+          <div class="awards-list">
+            <div class="award-item">
+              <span class="award-year">2026</span>
+              <div>
+                <div class="award-title">Best Master Thesis Award — KAIST CS Department</div>
+                <div class="award-sub">Thesis: <em>White Gaussian Noise Constraints</em></div>
+              </div>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2025</span>
+              <div>
+                <div class="award-title">Best Master's Paper Award — KCGS 2025</div>
+                <div class="award-sub">Paper: <em>Occupancy-Based Dual Contouring</em></div>
+              </div>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2021</span>
+              <div>
+                <div class="award-title">Korean National Undergraduate Math Competition</div>
+                <div class="award-sub">Bronze Award</div>
+              </div>
+            </div>
+            <div class="award-item">
+              <span class="award-year">2018–19</span>
+              <div>
+                <div class="award-title">Korean Olympiad in Informatics</div>
+                <div class="award-sub">Silver (2018) · Bronze (2019)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section id="publications">
+    <canvas id="pub-canvas"></canvas>
+    <div class="container">
+
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <div class="section-rule"></div>
+        <span class="section-jp">研究発表</span>
+      </div>
+      <h2 class="section-title">Publications</h2>
+
+      <!-- Precondition -->
+      <article class="pub-card">
+        <div class="pub-left">
+          <div class="pub-thumb" style="--c1:#f7971e;--c2:#ffd200;">
+            <img src="assets/thumbnails/precondition-thumbnail.png" alt="Precondition thumbnail" />
+          </div>
+          <span class="venue-tag icml">ICML 2026</span>
+        </div>
+        <div class="pub-body">
+          <h3 class="pub-title">Gradient Preconditioning for Efficient and Reliable Reward-Guided Generation</h3>
+          <p class="pub-authors">
+            <strong class="me">Jisung Hwang</strong> and
+            <a href="https://mhsung.github.io/" target="_blank">Minhyuk Sung</a>
+          </p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2602.08646" target="_blank" class="plink">arXiv</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PairFlow -->
+      <article class="pub-card">
+        <div class="pub-left">
+          <div class="pub-thumb" style="--c1:#667eea;--c2:#764ba2;">
+            <img src="assets/thumbnails/pairflow-thumbnail.png" alt="PairFlow thumbnail" />
+          </div>
+          <span class="venue-tag iclr">ICLR 2026</span>
+        </div>
+        <div class="pub-body">
+          <h3 class="pub-title">PairFlow: Closed-Form Source-Target Coupling for Few-Step Generation in Discrete Flow Models</h3>
+          <p class="pub-authors">
+            <a href="https://uygnim99.github.io/" target="_blank">Mingue Park</a><sup>*</sup>,
+            <strong class="me">Jisung Hwang<sup>*</sup></strong>,
+            <a href="https://dvelopery0115.github.io/" target="_blank">Seungwoo Yoo</a><sup>*</sup>,
+            <a href="https://32v.github.io/" target="_blank">Kyeongmin Yeo</a>,
+            <a href="https://mhsung.github.io/" target="_blank">Minhyuk Sung</a>
+          </p>
+          <p class="pub-eq"><sup>*</sup> equal contribution</p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2512.20063" target="_blank" class="plink">arXiv</a>
+            <a href="https://pair-flow.github.io/" target="_blank" class="plink">Project</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Gaussianity -->
+      <article class="pub-card">
+        <div class="pub-left">
+          <div class="pub-thumb" style="--c1:#f093fb;--c2:#f5576c;">
+            <img src="assets/thumbnails/gaussianity-thumbnail.png" alt="Gaussianity thumbnail" />
+          </div>
+          <span class="venue-tag neurips">NeurIPS 2025</span>
+        </div>
+        <div class="pub-body">
+          <h3 class="pub-title">Moment- and Power-Spectrum-Based Gaussianity Regularization for Text-to-Image Models</h3>
+          <p class="pub-authors">
+            <strong class="me">Jisung Hwang</strong>,
+            <a href="https://jh27kim.github.io/" target="_blank">Jaihoon Kim</a>,
+            <a href="https://mhsung.github.io/" target="_blank">Minhyuk Sung</a>
+          </p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2509.07027" target="_blank" class="plink">arXiv</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Flow Scaling -->
+      <article class="pub-card">
+        <div class="pub-left">
+          <div class="pub-thumb" style="--c1:#4facfe;--c2:#00f2fe;">
+            <img src="assets/thumbnails/rbf-thumbnail.png" alt="Flow Scaling thumbnail" />
+          </div>
+          <span class="venue-tag neurips">NeurIPS 2025</span>
+        </div>
+        <div class="pub-body">
+          <h3 class="pub-title">Inference-Time Scaling for Flow Models via Stochastic Generation and Rollover Budget Forcing</h3>
+          <p class="pub-authors">
+            <a href="https://jh27kim.github.io/" target="_blank">Jaihoon Kim</a><sup>*</sup>,
+            Taehoon Yoon<sup>*</sup>,
+            <strong class="me">Jisung Hwang<sup>*</sup></strong>,
+            <a href="https://mhsung.github.io/" target="_blank">Minhyuk Sung</a>
+          </p>
+          <p class="pub-eq"><sup>*</sup> equal contribution</p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2503.19385" target="_blank" class="plink">arXiv</a>
+            <a href="https://flow-inference-time-scaling.github.io/" target="_blank" class="plink">Project</a>
+            <a href="https://github.com/KAIST-Visual-AI-Group/Flow-Inference-Time-Scaling" target="_blank" class="plink">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Neural Green's -->
+      <article class="pub-card">
+        <div class="pub-left">
+          <div class="pub-thumb" style="--c1:#43e97b;--c2:#38f9d7;">
+            <img src="assets/thumbnails/neuralgreen-thumbnail.png" alt="Neural Green's thumbnail" />
+          </div>
+          <span class="venue-tag neurips">NeurIPS 2025</span>
+        </div>
+        <div class="pub-body">
+          <h3 class="pub-title">Neural Green's Functions for Solving Poisson's Equation</h3>
+          <p class="pub-authors">
+            <a href="https://dvelopery0115.github.io/" target="_blank">Seungwoo Yoo</a>,
+            <a href="https://32v.github.io/" target="_blank">Kyeongmin Yeo</a>,
+            <strong class="me">Jisung Hwang</strong>,
+            <a href="https://mhsung.github.io/" target="_blank">Minhyuk Sung</a>
+          </p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2511.01924" target="_blank" class="plink">arXiv</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ODC -->
+      <article class="pub-card">
+        <div class="pub-left">
+          <div class="pub-thumb" style="--c1:#fa709a;--c2:#fee140;">
+            <img src="assets/thumbnails/odc-thumbnail.png" alt="ODC thumbnail" />
+          </div>
+          <span class="venue-tag siggraph">SIGGRAPH Asia 2024</span>
+        </div>
+        <div class="pub-body">
+          <h3 class="pub-title">Occupancy-Based Dual Contouring</h3>
+          <p class="pub-authors">
+            <strong class="me">Jisung Hwang</strong> and
+            <a href="https://mhsung.github.io/" target="_blank">Minhyuk Sung</a>
+          </p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2409.13418" target="_blank" class="plink">arXiv</a>
+            <a href="https://occupancy-based-dual-contouring.github.io/" target="_blank" class="plink">Project</a>
+            <a href="https://github.com/KAIST-Visual-AI-Group/ODC" target="_blank" class="plink">Code</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <div class="section-rule"></div>
+        <span class="section-jp">連絡先</span>
+      </div>
+      <h2 class="section-title">Contact</h2>
+
+      <div class="contact-grid">
+        <div class="contact-left">
+          <p class="contact-desc">
+            Open to discussions on research, collaborations,
+            and topics related to graphics and generative AI.
+          </p>
+          <a href="mailto:4011hjs@kaist.ac.kr" class="contact-email">4011hjs@kaist.ac.kr</a>
+          <address class="contact-addr">
+            KAIST Visual AI Group<br />
+            E3-5, School of Computing<br />
+            291 Daehak-ro, Yuseong-gu<br />
+            Daejeon 34141, South Korea
+          </address>
+        </div>
+
+        <div class="contact-right">
+          <a href="https://scholar.google.com/citations?user=0JtvonsAAAAJ&hl=ja" target="_blank" class="social-row">
+            <span class="social-label">Google Scholar</span>
+            <span class="social-arrow">→</span>
+          </a>
+          <a href="https://kr.linkedin.com/in/jisung-hwang-1a9365340" target="_blank" class="social-row">
+            <span class="social-label">LinkedIn</span>
+            <span class="social-arrow">→</span>
+          </a>
+          <a href="https://twitter.com/Jisung0111" target="_blank" class="social-row">
+            <span class="social-label">X / Twitter</span>
+            <span class="social-arrow">→</span>
+          </a>
+          <a href="https://github.com/Jisung0111" target="_blank" class="social-row">
+            <span class="social-label">GitHub</span>
+            <span class="social-arrow">→</span>
+          </a>
+          <a href="cv/cv.pdf" target="_blank" class="social-row">
+            <span class="social-label">Download CV</span>
+            <span class="social-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Jisung Hwang</span>
+      <img src="favicon-jisung.png" alt="HJS" class="footer-logo" />
+      <span>KAIST Visual AI Group</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

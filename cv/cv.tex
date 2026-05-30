@@ -1,0 +1,427 @@
+% ============================================================
+%  Jisung Hwang — Curriculum Vitae
+%  Compile: pdflatex cv.tex
+% ============================================================
+\documentclass[10pt, a4paper]{article}
+
+% ---- Encoding & font ----
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext}
+\usepackage{microtype}
+
+% ---- Layout ----
+\usepackage[top=1.4cm, bottom=1.4cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+
+% ---- Color ----
+\usepackage[dvipsnames]{xcolor}
+\definecolor{accent}   {HTML}{B91C1C}
+\definecolor{bodytext} {HTML}{1E293B}
+\definecolor{muted}    {HTML}{64748B}
+\definecolor{location} {HTML}{475569}
+\definecolor{lightrule}{HTML}{CBD5E1}
+
+% ---- Venue badges ----
+\usepackage[skins]{tcolorbox}
+
+% ---- Icons ----
+\usepackage{fontawesome5}
+
+% ---- Section headings ----
+\usepackage{titlesec}
+\titleformat{\section}
+  {\small\bfseries\color{accent}}
+  {}{0pt}{\MakeUppercase}
+  [\vspace{2pt}{\color{lightrule}\hrule height 0.6pt}]
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+% ---- Hyperlinks ----
+\usepackage[hidelinks]{hyperref}
+
+% ---- Page ----
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\color{bodytext}
+
+% ============================================================
+%  Layout constant
+% ============================================================
+\newlength{\datecol}
+\setlength{\datecol}{3.65cm}   % stable gutter for "Dec. 2025 ~ Mar. 2026"
+\newlength{\entrygap}
+\setlength{\entrygap}{5pt}
+\newlength{\compactentrygap}
+\setlength{\compactentrygap}{\entrygap}
+\newlength{\detailgap}
+\setlength{\detailgap}{0pt}
+
+% ============================================================
+%  Macros
+% ============================================================
+
+\newcommand{\me}[1]{\underline{#1}}
+\newcommand{\datefmt}[1]{{\small\color{muted}#1}}
+\newcommand{\locfmt}[1]{{\small\itshape\color{location}#1}}
+\newcommand{\pubtitle}[1]{\textbf{#1}}
+\newcommand{\fitpubtitle}[1]{\resizebox{\linewidth}{!}{\textbf{#1}}}
+\newcommand{\fitpubline}[1]{\resizebox{\linewidth}{!}{#1}}
+\newcommand{\linkedpubtitle}[2]{\href{#1}{\pubtitle{#2}}}
+\newcommand{\linkedfitpubtitle}[2]{\href{#1}{\fitpubtitle{#2}}}
+\newcommand{\visuailab}{\href{https://visualai.kaist.ac.kr/}{KAIST Visual AI Lab}}
+\newcommand{\visualaigroup}{\href{https://visualai.kaist.ac.kr/}{KAIST Visual AI Group}}
+\newcommand{\minorinfo}[1]{{\footnotesize\color{muted}#1}}
+\newcommand{\briefinfo}[1]{{\small\bfseries\itshape\color{muted}#1}}
+
+% Venue badge
+\newcommand{\badge}[3]{%
+  \tcbox[
+    enhanced, nobeforeafter, tcbox raise base, on line,
+    colback=#1, colframe=#1, arc=2pt, boxrule=0pt,
+    left=4pt, right=4pt, top=1pt, bottom=1pt,
+  ]{\color{#2}\fontsize{7}{7}\selectfont\bfseries #3}%
+}
+\newcommand{\ICML}   {\badge{teal!18}     {teal!65!black}     {ICML 2026}}
+\newcommand{\ICLR}   {\badge{violet!14}   {violet!75!black}   {ICLR 2026}}
+\newcommand{\NeurIPS}{\badge{Plum!14}     {Plum!70!black}     {NeurIPS 2025}}
+\newcommand{\SIGGph} {\badge{BrickRed!14} {BrickRed!75!black} {SIGGRAPH Asia 2024}}
+
+% Education: degree on same line
+\newcommand{\cvheader}[4]{%
+  \noindent
+  \begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \makebox[\datecol][l]{\datefmt{#1}}%
+    \textbf{#2}\ifblank{#3}{}{\enspace\briefinfo{#3}} &
+    \locfmt{#4}
+  \end{tabularx}%
+}
+
+% Work: role on second line
+\newcommand{\cvheadertwo}[4]{%
+  \noindent
+  \begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \makebox[\datecol][l]{\datefmt{#1}}%
+    \textbf{#2} & \locfmt{#4} \\[-2pt]
+    \hspace*{\datecol}{\small\itshape\color{muted}#3} &
+  \end{tabularx}%
+}
+
+% Bullet list
+\newenvironment{cvlist}{%
+  \begin{itemize}[
+    leftmargin = \dimexpr\datecol + 0.18cm\relax,
+    itemsep=1pt, parsep=0pt, topsep=3pt,
+    label={\color{accent!60!white}\textbullet}
+  ]
+}{\end{itemize}\vspace{\entrygap}}
+
+% Quieter metadata lines for education details
+\newenvironment{edulist}{%
+  \begin{itemize}[
+    leftmargin = \datecol,
+    labelwidth=0pt, labelsep=0pt, itemindent=0pt,
+    itemsep=0pt, parsep=0pt, topsep=\detailgap, partopsep=0pt,
+    label={}
+  ]
+  \small\color{muted}
+}{\end{itemize}\vspace{\entrygap}}
+
+% Sub-bullets
+\newenvironment{cvsublist}{%
+  \begin{itemize}[
+    leftmargin=0.4cm, itemsep=0.5pt, parsep=0pt, topsep=0.5pt,
+    label={\color{muted}\textendash}
+  ]
+  \small\color{muted}
+}{\end{itemize}}
+
+% Award row — single row; subtitle is a line-break inside the X cell
+\newcommand{\awardrow}[3]{%
+  \noindent
+  \makebox[\datecol][l]{\datefmt{#1}}%
+  \begin{minipage}[t]{\dimexpr\textwidth-\datecol\relax}
+    \textbf{#2}\\[\detailgap]
+    {\small\itshape\color{muted}#3}
+  \end{minipage}\vspace{\entrygap}%
+}
+
+% Publication row — single row; authors+badge on second line inside X cell
+\newcommand{\pubrow}[4]{%
+  \noindent
+  \makebox[\datecol][l]{\datefmt{#1}}%
+  \begin{minipage}[t]{\dimexpr\textwidth-\datecol\relax}
+    #2\\[\detailgap]
+    {\small\color{muted}#3\ifblank{#4}{}{\enspace#4}}
+  \end{minipage}\vspace{\entrygap}%
+}
+
+\newcommand{\servicerow}[3]{%
+  \noindent
+  \makebox[\datecol][l]{\datefmt{#1}}%
+  \begin{minipage}[t]{\dimexpr\textwidth-\datecol\relax}
+    \textbf{#2}\ifblank{#3}{}{\\[-1pt]{\small\color{muted}#3}}
+  \end{minipage}\vspace{\compactentrygap}%
+}
+
+\newcommand{\teachingrow}[3]{%
+  \noindent
+  \begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \makebox[\datecol][l]{\datefmt{#1}}%
+    \textbf{#2} &
+    {\small\itshape\color{muted}#3}
+  \end{tabularx}\vspace{\compactentrygap}%
+}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+% ================================================================
+%  Header
+% ================================================================
+\noindent
+{\fontsize{26}{26}\selectfont\bfseries Jisung Hwang}%
+\hfill
+{\small\color{muted}
+  \faEnvelope\enspace\href{mailto:4011hjs@kaist.ac.kr}{4011hjs@kaist.ac.kr}
+  \quad
+  \faGithub\enspace\href{https://github.com/Jisung0111}{Jisung0111}
+  \quad
+  \faLinkedin\enspace\href{https://kr.linkedin.com/in/jisung-hwang-1a9365340}{LinkedIn}
+  \quad
+  \faGraduationCap\enspace
+  \href{https://scholar.google.com/citations?user=0JtvonsAAAAJ&hl=ja}{Google Scholar}
+}\\[6pt]
+{\small\color{muted}
+  Ph.D.\ Student\enspace\textbullet\enspace
+  \visualaigroup\enspace\textbullet\enspace
+  School of Computing%
+}\\[-5pt]
+{\color{accent}\hrule height 1.5pt}
+\vspace{5pt}
+
+% ================================================================
+\section{Education}
+% ================================================================
+
+\cvheader
+  {Mar.~2026\,$\sim$\,Present}
+  {\visuailab}{Candidate for Ph.D.}
+  {Daejeon, Republic of Korea}
+\begin{edulist}
+  \item Supervisor: Minhyuk Sung\enspace\textbullet\enspace KAIST School of Computing
+\end{edulist}
+
+\cvheader
+  {Mar.~2024\,$\sim$\,Feb.~2026}
+  {\visuailab}{M.S.}
+  {Daejeon, Republic of Korea}
+\begin{edulist}
+  \item Supervisor: Minhyuk Sung\enspace\textbullet\enspace KAIST School of Computing
+        \hfill \minorinfo{GPA\,:\,3.94\,/\,4.3}
+\end{edulist}
+
+\cvheader
+  {Feb.~2020\,$\sim$\,Feb.~2024}
+  {KAIST}{B.S.}
+  {Daejeon, Republic of Korea}
+\begin{edulist}
+  \item Major: Computer Science\quad(Double: Mathematical Science)
+        \hfill \minorinfo{GPA\,:\,3.87\,/\,4.3}
+  \item \minorinfo{Honors: KAIST Scholarship;\enspace
+        National Science \& Technology Scholarship due to Academic Excellence}
+\end{edulist}
+
+\cvheader
+  {Mar.~2017\,$\sim$\,Feb.~2020}
+  {Gyeongbuk Science High School}{}
+  {Pohang, Republic of Korea}
+\begin{edulist}
+  \item \minorinfo{Honors: Gyeongsangbuk-do Special Scholarship;\enspace
+        IT Education Support Conference Scholarship}
+\end{edulist}
+
+% ================================================================
+\section{Awards}
+% ================================================================
+
+\awardrow{2026}
+  {Best Master Thesis Award from KAIST CS Department}
+  {Master Thesis: `White Gaussian Noise Constraints'}
+
+\awardrow{2025}
+  {\href{https://cs.kaist.ac.kr/board/view?bbs_id=news&bbs_sn=11514&page=1&skey=subject&svalue=&menu=83}{Best Master's Paper Award at KCGS 2025}}
+  {By the paper `Occupancy-Based Dual Contouring'}
+
+\awardrow{2021}
+  {Korean National Undergraduate Math Competition}
+  {Bronze Award}
+
+\awardrow{2018,\,2019}
+  {Korean Olympiad in Informatics}
+  {Software Sector: Silver Award (2018);\enspace Algorithm Sector: Bronze Award (2019)}
+
+% ================================================================
+\section{Publications}
+% ================================================================
+
+\pubrow{2026}
+  {\linkedpubtitle{https://arxiv.org/abs/2602.08646}{Gradient Preconditioning for Efficient and Reliable Reward-Guided Generation}}
+  {\me{Jisung Hwang} and Minhyuk Sung}
+  {\ICML}
+
+\pubrow{2026}
+  {\linkedfitpubtitle{https://arxiv.org/abs/2512.20063}{PairFlow: Closed-Form Source-Target Coupling for Few-Step Generation in Discrete Flow Models}}
+  {\fitpubline{Mingue Park$^*$, \me{Jisung Hwang}$^*$, Seungwoo Yoo$^*$,
+   Kyeongmin Yeo, and Minhyuk Sung\enspace
+   {\footnotesize\color{muted}($^*$equal contribution)}\enspace\ICLR}}
+  {}
+
+\pubrow{2025}
+  {\linkedfitpubtitle{https://arxiv.org/abs/2509.07027}{Moment- and Power-Spectrum-Based Gaussianity Regularization for Text-to-Image Models}}
+  {\me{Jisung Hwang}, Jaihoon Kim, and Minhyuk Sung}
+  {\NeurIPS}
+
+\pubrow{2025}
+  {\linkedfitpubtitle{https://arxiv.org/abs/2503.19385}{Inference-Time Scaling for Flow Models via Stochastic Generation and Rollover Budget Forcing}}
+  {Jaihoon Kim$^*$, Taehoon Yoon$^*$, \me{Jisung Hwang}$^*$, and Minhyuk Sung\enspace
+   {\footnotesize\color{muted}($^*$equal contribution)}}
+  {\NeurIPS}
+
+\pubrow{2025}
+  {\linkedpubtitle{https://arxiv.org/abs/2511.01924}{Neural Green's Functions for Solving Poisson's Equation}}
+  {Seungwoo Yoo, Kyeongmin Yeo, \me{Jisung Hwang}, and Minhyuk Sung}
+  {\NeurIPS}
+
+\pubrow{2024}
+  {\linkedpubtitle{https://arxiv.org/abs/2409.13418}{Occupancy-Based Dual Contouring}}
+  {\me{Jisung Hwang} and Minhyuk Sung}
+  {\SIGGph}
+
+% ================================================================
+\section{Reviewer Service}
+% ================================================================
+
+\servicerow
+  {2026}
+  {ICML 2026}
+  {}
+
+\servicerow
+  {2026}
+  {SIGGRAPH 2026}
+  {}
+
+\servicerow
+  {2025}
+  {ICLR 2026}
+  {}
+
+\servicerow
+  {2025}
+  {SIGGRAPH Asia 2025}
+  {}
+
+% ================================================================
+\section{Teaching Experience}
+% ================================================================
+
+\teachingrow
+  {Spring 2026}
+  {\href{https://3dml.kaist.ac.kr/}{CS479 Machine Learning for 3D Data}}
+  {Teaching Assistant, KAIST}
+
+\teachingrow
+  {Spring 2025}
+  {\href{https://mhsung.github.io/kaist-cs479-spring-2025/}{CS479 Machine Learning for 3D Data}}
+  {Teaching Assistant, KAIST}
+
+\teachingrow
+  {Fall 2024}
+  {CS300 Introduction to Algorithms}
+  {Teaching Assistant, KAIST}
+
+\newpage
+
+% ================================================================
+\section{Work \& Leadership Experience}
+% ================================================================
+
+\cvheadertwo
+  {Dec.~2025\,$\sim$\,Mar.~2026}
+  {Visiting at \href{https://www-ui.is.s.u-tokyo.ac.jp/}{Igarashi Lab}, University of Tokyo}{Internship Trainee}
+  {Tokyo, Japan}
+\begin{cvlist}
+  \item Researched effective inference-time scaling in multi-step generation
+        by tilting the noise
+\end{cvlist}
+
+\cvheadertwo
+  {Dec.~2021\,$\sim$\,May~2023}
+  {\href{http://www.spidercore.io}{SpiderCore}}{AI Development Team Intern}
+  {Daejeon, Republic of Korea}
+\begin{cvlist}
+  \item Conducted prediction of cell-specific protein--protein interactions
+        by multitask learning
+  \begin{cvsublist}
+    \item Improved the ROC-AUC value by 4--18\% on HeLa, HEK293, HCT116, etc.
+  \end{cvsublist}
+  \item Researched cross-dimensional expandability of GNN using
+        multi-dimensional snake game
+  \begin{cvsublist}
+    \item Showed that an RL agent trained in 2D can generalize to higher dimensions
+    \item Visualized 3D snake game graphically using OpenGL in C++
+  \end{cvsublist}
+  \item Developed and optimized Python and C++ programs to train and evaluate AI models
+\end{cvlist}
+
+\cvheadertwo
+  {Jul.~2022\,$\sim$\,Sep.~2022}
+  {KAIST-POSTECH Science War}{School Representative for AI Match}
+  {}
+\begin{cvlist}
+  \item Implemented PPO, AlphaGo, and heuristic algorithms for the modified Quoridor game
+  \item \textbf{Led the victory in AI for the first time in 7 years}
+\end{cvlist}
+
+\cvheadertwo
+  {Sep.~2022\,$\sim$\,Sep.~2023}
+  {Vlab}{AI Team Developer, AI Development Club}
+  {}
+\vspace{\entrygap}
+
+% ================================================================
+\section{Extracurricular Experience}
+% ================================================================
+
+\cvheadertwo
+  {Sep.~2020\,$\sim$\,Jul.~2023}
+  {FingS\enspace\briefinfo{Fingerstyle Guitar Club}}{Practice and Concert Manager, Group Leader}
+  {}
+\begin{cvlist}
+  \item Trained 10 people every week for 1 year and managed 3 concerts as a sound engineer
+\end{cvlist}
+
+\cvheadertwo
+  {Sep.~2022\,$\sim$\,Present}
+  {Praiser\enspace\briefinfo{Christian Band Club}}{Electric Guitar, Bass Guitar Player}
+  {}
+\vspace{\entrygap}
+
+% ================================================================
+\section{Additional Information}
+% ================================================================
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}p{\datecol}@{}X@{}}
+  Language  & Fluent in Korean;\enspace Intermediate in English \\[2pt]
+  Computer  & Highly-skilled in Python, C/C++, PyTorch, CUDA, Flask, Linux, Cakewalk \\
+            & Intermediate in Java, C\#, Unity, MATLAB, Scala, MySQL, OpenGL \\[2pt]
+  Interests & Music Production, Playing instruments
+\end{tabularx}
+
+\end{document}
