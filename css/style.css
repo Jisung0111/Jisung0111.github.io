@@ -131,6 +131,12 @@ a { color: inherit; text-decoration: none; transition: color 0.2s; }
       rgba(5,5,12,0.65) 0%,
       rgba(5,5,12,0.10) 50%,
       rgba(5,5,12,0.35) 100%
+    ),
+    radial-gradient(
+      ellipse 60% 52% at 28% 45%,
+      rgba(5,5,12,0.34) 0%,
+      rgba(5,5,12,0.22) 42%,
+      transparent 74%
     );
 }
 
@@ -141,6 +147,7 @@ a { color: inherit; text-decoration: none; transition: color 0.2s; }
   pointer-events: none;
   z-index: 2;
   mix-blend-mode: screen; /* light effects blend naturally over the photo */
+  filter: brightness(1.08) saturate(1.05);
 }
 
 .hero-content {
@@ -157,6 +164,7 @@ a { color: inherit; text-decoration: none; transition: color 0.2s; }
   font-size: 0.72rem; font-weight: 500;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: rgba(240,240,244,0.62); margin-bottom: 16px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.72);
 }
 .hero-meta-dot {
   width: 6px; height: 6px; border-radius: 50%;
@@ -178,6 +186,7 @@ a { color: inherit; text-decoration: none; transition: color 0.2s; }
   letter-spacing: -0.03em;
   line-height: 0.92;
   color: var(--text);
+  text-shadow: 0 5px 26px rgba(0,0,0,0.78), 0 1px 3px rgba(0,0,0,0.55);
 }
 
 .hero-name-row {
@@ -188,17 +197,20 @@ a { color: inherit; text-decoration: none; transition: color 0.2s; }
   font-family: var(--font-jp);
   font-size: clamp(0.95rem, 2vw, 1.35rem);
   font-weight: 300; color: rgba(240,240,244,0.8); letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.72);
 }
 .name-zh {
   font-family: var(--font-jp);
   font-size: clamp(0.95rem, 2vw, 1.35rem);
   font-weight: 300; color: rgba(240,240,244,0.8); letter-spacing: 0.1em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.72);
 }
 .hero-divider-v {
   width: 1px; height: 16px; background: rgba(240,240,244,0.18);
 }
 .hero-fields {
   font-size: 0.95rem; color: rgba(240,240,244,0.75); letter-spacing: 0.04em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.72);
 }
 
 .hero-rule {

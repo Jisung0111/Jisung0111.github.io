@@ -66,7 +66,7 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
   function drawBokeh() {
     for (const b of bokeh) {
       const life = Math.sin((b.age / b.maxAge) * Math.PI); // 0→1→0
-      const alpha = life * (0.12 + (b.r / 78) * 0.10);
+      const alpha = 0.018 + life * (0.025 + (b.r / 78) * 0.030);
       if (alpha < 0.005) continue;
 
       const grd = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
@@ -79,8 +79,6 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
       ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
       ctx.fill();
 
-      b.x += b.vx; b.y += b.vy; b.age++;
-      if (b.age > b.maxAge) spawnBokeh(b, false);
     }
   }
 
@@ -93,7 +91,7 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
     s.vert  = Math.random() < 0.22;
     s.len   = 60 + Math.random() * 180;
     s.speed = 0.4 + Math.random() * 1.2;
-    s.alpha = 0.06 + Math.random() * 0.12;
+    s.alpha = 0.025 + Math.random() * 0.09;
     /* colour: red/white/amber */
     const p = Math.random();
     if (p < 0.35)      s.col = [232, 25,  44];   // red (Tokyo Tower / taillights)
@@ -130,8 +128,6 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
         grd.addColorStop(1,   `rgba(${r},${g},${b},0)`);
         ctx.strokeStyle = grd;
         ctx.moveTo(s.x, s.y); ctx.lineTo(s.x, s.y + s.len);
-        s.y += s.speed;
-        if (s.y > H + s.len) spawnStreak(s, false);
       } else {
         const grd = ctx.createLinearGradient(s.x, 0, s.x + s.len, 0);
         grd.addColorStop(0,   `rgba(${r},${g},${b},0)`);
@@ -139,8 +135,6 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
         grd.addColorStop(1,   `rgba(${r},${g},${b},0)`);
         ctx.strokeStyle = grd;
         ctx.moveTo(s.x, s.y); ctx.lineTo(s.x + s.len, s.y);
-        s.x += s.speed;
-        if (s.x > W + s.len) spawnStreak(s, false);
       }
       ctx.stroke();
     }
@@ -168,25 +162,21 @@ document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
   /* ---- Draw loop ---- */
   /* Canvas uses mix-blend-mode: screen in CSS, so only
      bright/coloured pixels add to the photo; black = invisible */
-  let raf;
   function draw() {
     /* Clear to pure black — with screen blend, black = transparent over photo */
     ctx.clearRect(0, 0, W, H);
 
     drawBokeh();
     drawStreaks();
-
-    raf = requestAnimationFrame(draw);
   }
 
   window.addEventListener('resize', () => {
-    cancelAnimationFrame(raf);
     resize();
-    raf = requestAnimationFrame(draw);
+    draw();
   });
 
   resize();
-  raf = requestAnimationFrame(draw);
+  draw();
 })();
 
 /* ===========================
