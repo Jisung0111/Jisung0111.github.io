@@ -495,6 +495,7 @@ a { color: inherit; text-decoration: none; transition: color 0.2s; }
 .venue-tag.siggraph { background: rgba(232,25,44,0.12);   color: #ff7070; border: 1px solid rgba(232,25,44,0.28); }
 .venue-tag.arxiv    { background: rgba(255,180,50,0.12);  color: #ffcc60; border: 1px solid rgba(255,180,50,0.25); }
 .venue-tag.icml     { background: rgba(0,180,120,0.12);   color: #4ddfaa; border: 1px solid rgba(0,180,120,0.28); }
+.venue-tag.eccv     { background: rgba(70,180,145,0.13);  color: #72dfbd; border: 1px solid rgba(70,180,145,0.28); }
 
 .pub-body { padding: 2px 0; }
 .pub-title {
