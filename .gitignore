@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Local tool settings
+.claude/
+
+# LaTeX build artifacts
+cv/*.aux
+cv/*.fdb_latexmk
+cv/*.fls
+cv/*.log
+cv/*.out
+
+# Stray duplicate thumbnail without an extension
+assets/thumbnails/noisetilt-thumbnail
