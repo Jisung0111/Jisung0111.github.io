@@ -20,6 +20,7 @@
 % ---- Color ----
 \usepackage[dvipsnames]{xcolor}
 \definecolor{accent}   {HTML}{B91C1C}
+\definecolor{awardbronze}{HTML}{927548}
 \definecolor{bodytext} {HTML}{1E293B}
 \definecolor{muted}    {HTML}{64748B}
 \definecolor{location} {HTML}{475569}
@@ -56,7 +57,7 @@
 \newlength{\entrygap}
 \setlength{\entrygap}{5pt}
 \newlength{\compactentrygap}
-\setlength{\compactentrygap}{\entrygap}
+\setlength{\compactentrygap}{2pt}
 \newlength{\detailgap}
 \setlength{\detailgap}{0pt}
 
@@ -88,6 +89,7 @@
 \newcommand{\ICML}   {\badge{teal!18}     {teal!65!black}     {ICML 2026}}
 \newcommand{\ICLR}   {\badge{violet!14}   {violet!75!black}   {ICLR 2026}}
 \newcommand{\ECCV}   {\badge{Green!14}    {Green!55!black}    {ECCV 2026}}
+\newcommand{\LoViF}  {\badge{black!6}     {black!65}          {LoViF @ ECCV 2026}}
 \newcommand{\NeurIPS}{\badge{Plum!14}     {Plum!70!black}     {NeurIPS 2025}}
 \newcommand{\SIGGph} {\badge{BrickRed!14} {BrickRed!75!black} {SIGGRAPH Asia 2024}}
 
@@ -251,11 +253,15 @@
 % ================================================================
 
 \awardrow{2026}
-  {Best Master Thesis Award from KAIST CS Department}
+  {\href{https://lovif-eccv2026-workshop.github.io/assets/certificates/noisetilt-outstanding-paper.pdf}{Outstanding Paper Award --- LoViF Workshop @ ECCV 2026}}
+  {By the paper `NoiseTilt: Noise-Tilted Reverse Kernels for Diffusion Reward Alignment'}
+
+\awardrow{2026}
+  {Best Master Thesis Award -- KAIST CS Department}
   {Master Thesis: `White Gaussian Noise Constraints'}
 
 \awardrow{2025}
-  {\href{https://cs.kaist.ac.kr/board/view?bbs_id=news&bbs_sn=11514&page=1&skey=subject&svalue=&menu=83}{Best Master's Paper Award at KCGS 2025}}
+  {\href{https://cs.kaist.ac.kr/board/view?bbs_id=news&bbs_sn=11514&page=1&skey=subject&svalue=&menu=83}{Best Master's Paper Award -- KCGS 2025}}
   {By the paper `Occupancy-Based Dual Contouring'}
 
 \awardrow{2021}
@@ -272,8 +278,10 @@
 
 \pubrow{2026}
   {\linkedpubtitle{https://arxiv.org/abs/2606.18066}{NoiseTilt: Noise-Tilted Reverse Kernels for Diffusion Reward Alignment}}
-  {\me{Jisung Hwang}, Yunhong Min, Jaihoon Kim, I-Chao Shen, and Minhyuk Sung}
-  {\ECCV}
+  {\fitpubline{\me{Jisung Hwang}, Yunhong Min, Jaihoon Kim, I-Chao Shen, and Minhyuk Sung\enspace
+   \ECCV\enspace\href{https://lovif-eccv2026-workshop.github.io/}{\LoViF}}\\[2pt]
+   \href{https://lovif-eccv2026-workshop.github.io/assets/certificates/noisetilt-outstanding-paper.pdf}{\textbf{\color{awardbronze}Outstanding Paper Award --- LoViF Workshop}}}
+  {}
 
 \pubrow{2026}
   {\linkedpubtitle{https://arxiv.org/abs/2602.08646}{Gradient Preconditioning for Efficient and Reliable Reward-Guided Generation}}
@@ -332,6 +340,8 @@
   {SIGGRAPH Asia 2025}
   {}
 
+\newpage
+
 % ================================================================
 \section{Teaching Experience}
 % ================================================================
@@ -351,7 +361,6 @@
   {CS300 Introduction to Algorithms}
   {Teaching Assistant, KAIST}
 
-\newpage
 
 % ================================================================
 \section{Work \& Leadership Experience}
@@ -424,7 +433,7 @@
 
 \noindent
 \begin{tabularx}{\textwidth}{@{}p{\datecol}@{}X@{}}
-  Language  & Fluent in Korean;\enspace Intermediate in English \\[2pt]
+  Language  & Fluent in Korean;\enspace Intermediate in English;\enspace Japanese (JLPT N1, July 2026) \\[2pt]
   Computer  & Highly-skilled in Python, C/C++, PyTorch, CUDA, Flask, Linux, Cakewalk \\
             & Intermediate in Java, C\#, Unity, MATLAB, Scala, MySQL, OpenGL \\[2pt]
   Interests & Music Production, Playing instruments

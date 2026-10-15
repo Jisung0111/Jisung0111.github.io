@@ -503,6 +503,17 @@ a { color: inherit; text-decoration: none; transition: color 0.2s; }
   font-size: 0.95rem; font-weight: 600; line-height: 1.45;
   color: var(--text); margin-bottom: 8px;
 }
+.venue-tag.workshop {
+  background: rgba(255,255,255,0.04); color: var(--muted);
+  border: 1px solid var(--subtle);
+}
+.venue-tag.workshop:hover { border-color: var(--muted); color: var(--text); }
+.pub-award {
+  font-size: 0.78rem; font-weight: 600; line-height: 1.5;
+  color: #ffcc60; margin-bottom: 8px;
+}
+.pub-award a { color: inherit; }
+.pub-award a:hover { text-decoration: underline; }
 .pub-authors {
   font-size: 0.82rem; color: var(--muted); margin-bottom: 6px; line-height: 1.65;
 }
